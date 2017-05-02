@@ -1,0 +1,52 @@
+#header-nav {	
+	border-radius:0;
+	border: 0;
+}
+
+#nav-list{
+	margin-top: 10px;
+}
+
+#nav-list a{
+	color: #951C49;
+	text-align: center
+}
+
+#nav-list a:hover{
+	color: Blue;
+}
+#header{
+	text-align: center;
+	margin-bottom: 50px;
+	color: brown;
+	font-weight: bold;
+	font-size: 24px;
+}
+.card-header{
+	text-align: center;	
+}
+
+.black{
+	background-color: black;
+	color: white;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-style: italic;
+}
+.blue{
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-style: italic;
+}
+.yellow{
+	background-color: yellow;
+	color: black;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-style: italic;
+}
