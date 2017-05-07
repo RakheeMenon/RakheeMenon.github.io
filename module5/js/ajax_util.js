@@ -18,15 +18,15 @@
 //MAkes an Ajax GET request to requestURL
 
 ajaxUtil.sendGetrequest =
-function(requestURL,responseHandler) {
+function(requestUrl,responseHandler) {
 	var request=getRequestObject();
 	request.onreadystatechange =
 	function()
 	{
 		handleResponse(request,responseHandler);
 	};
-	request.open("GET",requestURL,true);
-	request.send();
+	request.open("GET",requestUrl,true);
+	request.send(null);
 }
 
 function handleResponse(request,requestHandler){

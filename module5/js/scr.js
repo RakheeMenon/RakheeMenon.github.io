@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded",
 		.addEventListener("click",function(){
 
 			$ajaxUtil
-				.sendGetRequest("/data/name.txt",
+				.sendGetrequest("/data/name.txt",
 					function(request) {
 						var name = request.responseText;
 
 				document.querySelector("#content")
-				.innerHTML ="<h2>Hello"+self.name + "!";
+				.innerHTML ="<h2>Hello"+ name + "!";
 
 			});	
 
