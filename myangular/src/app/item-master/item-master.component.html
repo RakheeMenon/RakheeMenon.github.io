@@ -1,0 +1,109 @@
+<!-- <form>
+  <div class="form-group col-xs-10">
+    <label for="itemName">Item Name</label>
+    <input id="itemName" type="text" placeholder="Item Name" class="form-control">
+  </div>
+  <div class="form-group col-xs-10">
+    <label for="itemDescription">Item Description</label>
+    <textarea name="itemDescription" id="itemDescription" placeholder="Item Description" class="form-control"></textarea>
+  </div>
+  <div class="form-group col-xs-10">
+    <label for="itemGroup">Item Group</label>
+    <select name="itemGroup" id="itemGroup" class="form-control">
+    <option value=""></option>
+    <option *ngFor="let group of itemgroup" [value]="group.id">
+      {{ group.name }}
+    </option>
+    </select>
+  </div>
+  <button class="btn btn-primary ">Save</button>
+</form>  -->
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="createPost()"> 
+ <div class="row">
+          <div class="col-md-12">
+            <div class="card col-lg-10">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="well bs-component">
+                      <fieldset>
+                        <legend>Item Master</legend>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="itemName">Item Name</label>
+                          <div class="col-lg-10">
+                            <input
+                              formControlName="itemName" 
+                              class="form-control" 
+                              id="itemName" 
+                              type="text" 
+                              placeholder="Enter item name">
+                              <div *ngIf="itemName.touched && itemName.invalid"class="alert alert-danger">
+                                <div *ngIf="itemName.errors.required">Item Name is required</div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="itemNo">Item No</label>
+                          <div class="col-lg-10">
+                            <input
+                              formControlName="itemNo" 
+                              class="form-control" 
+                              id="itemNo" 
+                              type="text" 
+                              placeholder="Enter item number">
+                              <div *ngIf="itemNo.touched && itemNo.invalid" class="alert alert-danger">
+                                <div *ngIf="itemName.errors.required">Item number is required</div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="itemDescription">Item Description</label>
+                          <div class="col-lg-10">
+                            <textarea
+                              formControlName="itemDescription" 
+                              class="form-control" 
+                              id="itemDescription">
+                            </textarea>
+                            <div *ngIf="itemDescription.touched && itemDescription.invalid" class="alert alert-danger">
+                                <div *ngIf="itemDescription.errors.required">Item Description is required</div>
+                           </div>
+                          </div>
+                           
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" for="itemGroup">Item Group</label>
+                          <div class="col-lg-10">
+                            <select
+                              formControlName="itemGroup" 
+                              class="form-control" 
+                              id="itemGroup">
+                              
+                              <option value=""></option>
+                              <option *ngFor="let group of group"[value]="group.id">
+                                {{ group.name }}
+                              </option>
+                            </select><br><br>
+                            <div *ngIf="itemGroup.touched && itemGroup.invalid" class="alert alert-danger">
+                                <div *ngIf="itemGroup.errors.required">Item Group is required</div>
+                            </div>
+                          </div>
+                            
+                        </div>
+                        <div class="form-group">
+                          <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-default" type="reset">Cancel</button>
+                            <button [disabled]="form.invalid" class="btn btn-success" type="submit">Submit</button>
+                          </div>
+                        </div>
+                      </fieldset>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+ </div>
+</form>
+              
+            
+
+
+
