@@ -33,6 +33,10 @@ import { GithubProfileComponent } from './github-profile/github-profile.componen
 import { ArchiveComponent } from './archive/archive.component';
 import { ItemMasterComponent } from './item-master/item-master.component';
 import {Item} from './item';
+import { ItemMasterListComponent } from './item-master-list/item-master-list.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
+//import { ItemMlistComponent } from './item-mlist/item-mlist.component';
+//import { ItemMComponent } from './item-m/item-m.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import {Item} from './item';
     GithubProfileComponent,
     ArchiveComponent,
     ItemMasterComponent,
+    ItemMasterListComponent,
+    ItemDetailsComponent,
+    //ItemMlistComponent,
+    //ItemMComponent,
     //NgClass
   
   ],
@@ -73,9 +81,25 @@ import {Item} from './item';
         component:HomeComponent
       },
       {
+        path:'lists',
+        component:ItemMasterListComponent
+      },
+      {
+        path:'items/:id',
+        component:ItemMasterComponent
+      },
+      {
+        path:'items',
+        component:ItemMasterComponent
+      },
+      /*{
         path:'archive/:year/:month',
         component:ArchiveComponent
-      },
+      },*/
+      /*{
+        path:'details',
+        component: ItemDetailsComponent
+      },*/
       {
         path:'followers/:id/:username',
         component:GithubProfileComponent
@@ -90,13 +114,23 @@ import {Item} from './item';
         component:PostsComponent
       },
       {
-        path:'itemmaster',
-        component:ItemMasterComponent
-      },
-      {
         path:'**',
         component:NotfoundComponent
       }
+      /*{
+        path:'item/:id',
+        component:ItemMasterComponent
+      },
+      {
+        path:'items/new',
+        component:ItemMasterComponent
+      },
+      {
+        path:'items',
+        component:ItemMasterComponent
+      },*/
+      
+      
     ])
   ],
   providers: [AuthorsService,

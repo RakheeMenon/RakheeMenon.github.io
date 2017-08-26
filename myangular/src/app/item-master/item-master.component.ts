@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ItemMasterService} from './../services/item-master.service'
 import {Item} from './../item';
 
@@ -14,7 +14,7 @@ import {Item} from './../item';
   styleUrls: ['./item-master.component.css']
 })
 export class ItemMasterComponent implements OnInit {
-  itemmaster:any[];
+  //itemmaster:any[];
   itemname:string;
   itemno:number;
   itemdescription:string;
@@ -22,6 +22,7 @@ export class ItemMasterComponent implements OnInit {
   item=new Item();
   form:FormGroup;
   items:any[];
+  list:any[];
   group = [
     {id:1,name:'Casting'},
     {id:2,name:'Forging'},
@@ -30,14 +31,15 @@ export class ItemMasterComponent implements OnInit {
 
   ngOnInit(){
 
-          this.service.getAll()
-          .subscribe(item => console.log(item));
+          /*this.service.getAll()
+          .subscribe(item => console.log(item));*/
   }
 
   constructor(
               private service:ItemMasterService,
               fb:FormBuilder,
-              private _router: Router
+              private _router: Router,
+              private _route:ActivatedRoute
               ) 
   { 
       this.form=fb.group({
@@ -49,24 +51,41 @@ export class ItemMasterComponent implements OnInit {
   }
 
 
-  createPost(){
-    //let items={itemName:input.value,itemNo:input.value,itemDescription:input.value,itemGroup:input.value}          //we create the posts object & immediately place it inside posts.
-    //this.items.splice(0,0,items);  
+  submit(input){
+    console.log(input);
+    console.log('rohit')
+    let item ={}
+    this.itemname=input.itemName;
+    this.itemno=input.itemNo;
+    this.itemdescription=input.itemDescription;
+    this.itemgroup=input.itemGroup;
+    /*let items={itemNaminpute:input.value,itemNo:input.value,itemDescription:input.value,itemGroup:input.value}
+    console.log(items);
+    console.log('test')          //we create the posts object & immediately place it inside posts.;
+    this.items.splice(0,0,items);  
+    
     //var result;
-    //input.value='';
+    //input.value='';input
     console.log("saved");
-    this.service.create(this.item)
+    console.log(input)
+    console.log('input')
+    console.log(this.item);
+    console.log('this.template')*/
+   // let items={itemName:input.value,itemNo:input.value,itemDescription:input.value,itemGroup:input.value}
+    
+    var result=this.service.create(input)
     //console.log(result);
-    .subscribe(
+    //con
+    result.subscribe(
       item=>{
         //item=console.log(item);
         this.itemname=item.itemName;
         this.itemno=item.itemNo;
         this.itemdescription=item.itemDescription;
         this.itemgroup=item.itemGroup;
-        debugger;
-      //post['id']=newPost.id;
-       //this._router.navigate(['item']);
+        
+      //post['id']=newPost.id;*/
+       this._router.navigate(['items']);
       
     },
     (error:Response)=>{
@@ -95,7 +114,5 @@ export class ItemMasterComponent implements OnInit {
     return this.form.get('itemGroup');
   }
 
-  submit(){
-    console.log("Submitted");
-  }
+  
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-archive',
+  selector: 'archive',
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })

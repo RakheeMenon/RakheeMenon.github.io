@@ -20,14 +20,16 @@ export class DataService {
   }
 
   create(resource){
+    console.log(resource);
     let headers = new Headers({
             "Access-Control-Allow-Origin":'*',
             "Access-Control-Allow-Headers":'Accept, Content-Type, Origin',
             "Access-Control-Allow-Methods":'GET, POST, PUT, DELETE, OPTIONS',
             "Content-Type": 'application/json'
             });
-        let options = new RequestOptions({ headers: headers }); 
-    return this.http.post(this.url,JSON.stringify(resource),options)
+        let options = new RequestOptions({ headers: headers });
+    console.log('resources')
+     return this.http.post(this.url,JSON.stringify(resource),options)
     .map(response=>response.json())
     .catch(this.handleError);
   }
