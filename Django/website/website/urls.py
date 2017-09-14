@@ -6,7 +6,8 @@ from forms import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^forms/', views.FormList.as_view()),
+    url(r'^forms/', include("forms.urls")),
+
 ]
 
-urlpatterns=format_suffix_patterns(urlpatterns)
+#urlpatterns=format_suffix_patterns(urlpatterns)
