@@ -17,6 +17,7 @@ export class ItemMasterComponent implements OnInit {
   //itemmaster:any[];
   itemname:string;
   itemno:number;
+  id:number;
   itemdescription:string;
   itemgroup:string;
   item=new Item();
@@ -29,10 +30,22 @@ export class ItemMasterComponent implements OnInit {
     {id:3,name:'Machining'},
   ]
 
-  ngOnInit(){
+  ngOnInit(){ 
 
-          /*this.service.getAll()
-          .subscribe(item => console.log(item));*/
+          
+       
+          //this.getParamValues();
+          //this.service.getAll()
+          //.subscribe(item => console.log(item));
+          /*this.service.getDetails(this.id)
+            .subscribe(
+              item=>this.item=item,
+              response=>{
+                if(response.status == 404){
+                   this._router.navigate(['NotFound']);
+                }
+              });*/
+              
   }
 
   constructor(
@@ -50,15 +63,29 @@ export class ItemMasterComponent implements OnInit {
     })
   }
 
+  
+
+  /*getParamValues(){
+     
+      this._route.paramMap
+          .subscribe(params=>{
+          let id=+params.get('id');
+          console.log(id);
+        //this.service.getId(id);
+      
+       });
+    }*/
 
   submit(input){
+    
     console.log(input);
     console.log('rohit')
-    let item ={}
-    this.itemname=input.itemName;
+    
+    //let item ={}
+    /*this.itemname=input.itemName;
     this.itemno=input.itemNo;
     this.itemdescription=input.itemDescription;
-    this.itemgroup=input.itemGroup;
+    this.itemgroup=input.itemGroup;*/
     /*let items={itemNaminpute:input.value,itemNo:input.value,itemDescription:input.value,itemGroup:input.value}
     console.log(items);
     console.log('test')          //we create the posts object & immediately place it inside posts.;
@@ -73,17 +100,24 @@ export class ItemMasterComponent implements OnInit {
     console.log('this.template')*/
    // let items={itemName:input.value,itemNo:input.value,itemDescription:input.value,itemGroup:input.value}
     
-    var result=this.service.create(input)
+    
+     this.service.create(input)
     //console.log(result);
     //con
-    result.subscribe(
+    .subscribe(
       item=>{
         //item=console.log(item);
+        
+        //this.id=item.id;
         this.itemname=item.itemName;
         this.itemno=item.itemNo;
         this.itemdescription=item.itemDescription;
         this.itemgroup=item.itemGroup;
+
         
+        
+        //item['id']=item.id;
+        console.log(item.id)
       //post['id']=newPost.id;*/
        this._router.navigate(['items']);
       
@@ -96,7 +130,18 @@ export class ItemMasterComponent implements OnInit {
         }
         else throw error;
       });
+
+
+      /*this._route.paramMap
+          .subscribe(params=>{
+          let id=+params.get('id');
+          console.log(id);
+        //this.service.getId(id);
+      
+       });*/
   }
+
+  
 
   get itemName(){
     return this.form.get('itemName');
@@ -114,5 +159,6 @@ export class ItemMasterComponent implements OnInit {
     return this.form.get('itemGroup');
   }
 
+  
   
 }

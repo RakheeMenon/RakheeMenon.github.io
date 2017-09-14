@@ -1,6 +1,6 @@
 <h1>List of items</h1>
 <p>
-	<a routerLink="/items">Add item</a>
+	<a class="btn btn-primary" routerLink="/items">Add item</a>
 </p>
 
 <table class="table table-bordered">
@@ -14,12 +14,22 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let list of items">
-		<td>	
-		<a routerLink="/items" (click)="display()"> {{ list.itemName }}</a>      
+		<td>		
+		<a [routerLink]="['/items',list.id]" (click)="Edit(item)"> 
+			{{ list.itemName }}	
+		</a>  
 		</td>  
 			<td>{{ list.itemNo }}</td>
 			<td>{{ list.itemDescription}}</td>
 			<td>{{ list.itemGroup }}</td>
+			<!--<td>
+				<a (click)="updateItem(item)">
+				 Update
+				</a> 
+			</td> -->
+			<!--<td>
+                <i (click)="deleteItem(item)" class="glyphicon glyphicon-remove clickable"></i>
+			</td> -->
 		</tr>
 	</tbody>
 </table>
