@@ -13,15 +13,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let list of items">
+		<tr *ngFor="let item of items">
 		<td>		
-		<a [routerLink]="['/items',list.id]" (click)="Edit(item)"> 
-			{{ list.itemName }}	
+		<a [routerLink]="['/items',item.id]" (click)="Edit(item)"> 
+			{{ item.itemName }}	
 		</a>  
 		</td>  
-			<td>{{ list.itemNo }}</td>
-			<td>{{ list.itemDescription}}</td>
-			<td>{{ list.itemGroup }}</td>
+			<td>{{ item.itemNo }}</td>
+			<td>{{ item.itemDescription}}</td>
+			<td>{{ item.itemGroup }}</td>
 			<!--<td>
 				<a (click)="updateItem(item)">
 				 Update

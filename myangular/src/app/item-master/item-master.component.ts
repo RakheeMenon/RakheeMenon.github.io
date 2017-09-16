@@ -35,8 +35,8 @@ export class ItemMasterComponent implements OnInit {
           
        
           //this.getParamValues();
-          //this.service.getAll()
-          //.subscribe(item => console.log(item));
+          this.service.getAll()
+          .subscribe(item => console.log(item));
           /*this.service.getDetails(this.id)
             .subscribe(
               item=>this.item=item,
@@ -45,6 +45,8 @@ export class ItemMasterComponent implements OnInit {
                    this._router.navigate(['NotFound']);
                 }
               });*/
+
+              
               
   }
 

@@ -14,7 +14,7 @@ import {Item} from './../item';
 export class ItemMasterListComponent implements OnInit {
 items:any[];
 item=new Item();
-id:number;
+public Itemid:number;
 itemname:string;
 itemno:number;
 itemdescription:string;
@@ -91,15 +91,40 @@ itemgroup:string;
       item=>{
         //this.service.getAll()
       //console.log(updatedPost);
-        this.itemname=item.itemName;
-        this.itemno=item.itemNo;
-        this.itemdescription=item.itemDescription;
-        this.itemgroup=item.itemGroup;
+       
     });
   }*/
 
   Edit(item){
-       this.router.navigate(['/items',item.id])
+
+
+    this.router.navigate(['/items',item.id])
+       /* var result;
+        this.service.getDetails(id)
+		            	.subscribe(
+                    item => this.item = item,
+                    response => {
+                    if (response.status == 404) {
+                        this.router.navigate(['NotFound']);
+                    }
+                  });*/
+        this.itemname=item.itemName;
+        this.itemno=item.itemNo;
+        this.itemdescription=item.itemDescription;
+        this.itemgroup=item.itemGroup;
+      /* this.route.paramMap
+          .subscribe(params=>{
+           let Itemid=+params.get('id');
+            this.service.getDetails(Itemid)
+			.subscribe(
+                item => this.item = item,
+                response => {
+                    if (response.status == 404) {
+                        this.router.navigate(['NotFound']);
+                    }
+                });
+          });*/
+              
             console.log("clicked");
   }
   

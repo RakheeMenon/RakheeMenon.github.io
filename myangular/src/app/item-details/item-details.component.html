@@ -1,4 +1,4 @@
-<form class="form-horizontal" [formGroup]="form"> 
+  <form class="form-horizontal" [formGroup]="form"> 
  <div class="row">
           <div class="col-md-12">
             <div class="card col-lg-10">
@@ -16,6 +16,7 @@
                               id="itemName" 
                               type="text" 
                               placeholder="Enter item name">
+                                {{ item.itemName}}
                               <div *ngIf="itemName.touched && itemName.invalid"class="alert alert-danger">
                                 <div *ngIf="itemName.errors.required">Item Name is required</div>
                               </div>
@@ -29,7 +30,8 @@
                               class="form-control" 
                               id="itemNo" 
                               type="text" 
-                              placeholder="Enter item number">
+                              placeholder="Enter item number"
+                            >
                               <div *ngIf="itemNo.touched && itemNo.invalid" class="alert alert-danger">
                                 <div *ngIf="itemName.errors.required">Item number is required</div>
                               </div>
@@ -43,6 +45,7 @@
                               class="form-control" 
                               id="itemDescription">
                             </textarea>
+                             
                             <div *ngIf="itemDescription.touched && itemDescription.invalid" class="alert alert-danger">
                                 <div *ngIf="itemDescription.errors.required">Item Description is required</div>
                            </div>
@@ -58,10 +61,12 @@
                               id="itemGroup">
                               
                               <option value=""></option>
-                              <option *ngFor="let group of group"[value]="group.id">
+                              <option *ngFor="let group of group"[value]="group.name">
                                 {{ group.name }}
                               </option>
+                               
                             </select><br><br>
+                            
                             <div *ngIf="itemGroup.touched && itemGroup.invalid" class="alert alert-danger">
                                 <div *ngIf="itemGroup.errors.required">Item Group is required</div>
                             </div>
@@ -70,7 +75,7 @@
                         </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
-                           <!-- <button class="btn btn-default" type="reset">Cancel</button> -->
+                            <button class="btn btn-default" type="reset">Cancel</button> 
                             <button [disabled]="form.invalid" class="btn btn-success" (click)="submit(form.value)" type="submit">Submit</button>
                             <button class="btn btn-primary" routerLink="/lists">ListDisplay</button> 
                           </div>
@@ -82,5 +87,39 @@
             </div>
           </div>
  </div>
-</form>
+</form> 
+
+<!--<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Item Name</th>
+			<th>Item No</th>
+			<th>Item Description</th>
+			<th>Item Group</th>
+		</tr>
+	</thead>
+	<tbody>
+		<td>		
+		
+			{{ item.itemName }}	
+		 
+		</td>  
+			<td>{{ item.itemNo }}</td>
+			<td>{{ item.itemDescription}}</td>
+			<td>{{ item.itemGroup }}</td>
+			<td>
+				<a (click)="updateItem(item)">
+				 Update
+				</a> 
+			</td> 
+			<td>
+                <i (click)="deleteItem(item)" class="glyphicon glyphicon-remove clickable"></i>
+			</td> 
+	</tbody>
+</table> -->
+
+
+
+
+
               

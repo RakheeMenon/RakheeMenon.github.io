@@ -1,6 +1,8 @@
 import { Item } from './../item';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ItemMasterService } from './../services/item-master.service';
+import { BadInput } from './../common/bad-input';
+import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,16 +11,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-  Itemid:number;
+  //Itemid:number;
   itemname:string;
   itemno:number;
   itemdescription:string;
   itemgroup:string;
+  items:any[];
+  form:FormGroup;
   item =new Item();
+   group = [
+    {id:1,name:'Casting'},
+    {id:2,name:'Forging'},
+    {id:3,name:'Machining'},
+  ]
   constructor(
               private service:ItemMasterService,
               private _router: Router,
+              fb:FormBuilder,
               private _route:ActivatedRoute) {
+
+                this.form=fb.group({
+                  itemName:['',Validators.required],
+                  itemNo:['',Validators.required],
+                  itemDescription:['',Validators.required],
+                  itemGroup:['',Validators.required]
+    })
 
                }
 
@@ -35,7 +52,7 @@ export class ItemDetailsComponent implements OnInit {
                    this._router.navigate(['NotFound']);
                 }*/
               //});
-            let id=this._route.snapshot.params['id'];
+           /* let id=this._route.snapshot.params['id'];
             this.Itemid=id;
             console.log(id);
             this.service.getDetails(id)
@@ -45,12 +62,53 @@ export class ItemDetailsComponent implements OnInit {
                     if (response.status == 404) {
                         this._router.navigate(['NotFound']);
                     }
-                });
+                });*/
+                /*this.service.getAll()
+          .subscribe(item => this.item);*/
+
+
+                  this._route.paramMap
+                  .subscribe(params=>{
+                  let Itemid=+params.get('id');
+                  console.log(Itemid);
+                  this.service.getDetails(Itemid)
+                  .subscribe(item=>{                                        //xyz=>this.item=xyz
+                     this.item=item
+                    //this.item=item,
+                    //this.item=items,
+                    //console.log(items);
+                    //console.log("xyz");
+                    },
+                   (error:Response)=>{
+                 //updating UI
+
+                  if(error instanceof BadInput){        //error handling
+                    // this.form.setErrors(error.originalError)
+                    }
+                      else throw error;
+                    });
+
+                  });
 
       
   }
 
 
+  get itemName(){
+    return this.form.get('itemName');
+  }
+
+  get itemNo(){
+    return this.form.get('itemNo');
+  }
+
+  get itemDescription(){
+    return this.form.get('itemDescription');
+  }
+
+  get itemGroup(){
+    return this.form.get('itemGroup');
+  }
 
   /*updateItem(){
     
