@@ -2,6 +2,8 @@ import { Item } from './../item';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ItemMasterService } from './../services/item-master.service';
 import { BadInput } from './../common/bad-input';
+import { NotFoundError } from './../common/not-found-error';
+import { AppError } from './../common/app-error';
 import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -92,6 +94,17 @@ export class ItemDetailsComponent implements OnInit {
 
       
   }
+
+
+ EditItem(item){
+    this.service.update(item)
+      .subscribe(item=>{
+        this.item=item;
+      });
+
+  }
+
+  
 
 
   get itemName(){

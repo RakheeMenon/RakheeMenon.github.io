@@ -15,8 +15,10 @@
                               class="form-control" 
                               id="itemName" 
                               type="text" 
-                              placeholder="Enter item name">
-                                {{ item.itemName}}
+                              placeholder="Enter item name"
+                              [(ngModel)]="item.itemName"
+                              >
+                                
                               <div *ngIf="itemName.touched && itemName.invalid"class="alert alert-danger">
                                 <div *ngIf="itemName.errors.required">Item Name is required</div>
                               </div>
@@ -31,6 +33,7 @@
                               id="itemNo" 
                               type="text" 
                               placeholder="Enter item number"
+                               [(ngModel)]="item.itemNo"
                             >
                               <div *ngIf="itemNo.touched && itemNo.invalid" class="alert alert-danger">
                                 <div *ngIf="itemName.errors.required">Item number is required</div>
@@ -43,7 +46,8 @@
                             <textarea
                               formControlName="itemDescription" 
                               class="form-control" 
-                              id="itemDescription">
+                              id="itemDescription"
+                              [(ngModel)]="item.itemDescription">
                             </textarea>
                              
                             <div *ngIf="itemDescription.touched && itemDescription.invalid" class="alert alert-danger">
@@ -56,9 +60,11 @@
                           <label class="col-lg-2 control-label" for="itemGroup">Item Group</label>
                           <div class="col-lg-10">
                             <select
+                              [(ngModel)]="item.itemGroup"
                               formControlName="itemGroup" 
                               class="form-control" 
-                              id="itemGroup">
+                              id="itemGroup"
+                              >
                               
                               <option value=""></option>
                               <option *ngFor="let group of group"[value]="group.name">
@@ -75,9 +81,11 @@
                         </div>
                         <div class="form-group">
                           <div class="col-lg-10 col-lg-offset-2">
-                            <button class="btn btn-default" type="reset">Cancel</button> 
-                            <button [disabled]="form.invalid" class="btn btn-success" (click)="submit(form.value)" type="submit">Submit</button>
-                            <button class="btn btn-primary" routerLink="/lists">ListDisplay</button> 
+                          <!--   <button class="btn btn-default" type="reset">Cancel</button>  -->
+                            <button  class="btn btn-success" (click)="EditItem(item)" type="submit">Save</button> 
+                            <button class="btn btn-primary" routerLink="/lists">Back</button>
+                          <!-- <button class="btn btn-primary" (click)="deleteItem(item)" type="submit">Delete</button> -->
+                          <!--  <button class="btn btn-primary" routerLink="/lists">ListDisplay</button> -->
                           </div>
                         </div>  
                       </fieldset>

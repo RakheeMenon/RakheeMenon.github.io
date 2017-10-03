@@ -1,41 +1,138 @@
-<h1>List of items</h1>
+ <!-- <i class="fa fa-window-close-o" (click) = "showHide=!showHide" aria-hidden="true"></i> -->
+ <!--<div data-role="popup" id="popupUndismissible" class="ui-content"  data-dismissible="false">
+	<a routerLink="/"  class=" fa fa-window-close-o  ui-btn-right"></a> -->
+	<!--	<div class="row">
+			<div class="col-md-12">
+        		<div class="card">  
+			  		<h3 class="card-title">List of items</h3>
+			  		<p>
+						<a class="btn btn-primary" routerLink="/items">Add item</a>
+			  		</p>
+            		<div class="table-responsive">
+                		<table class="table table-bordered">
+							<thead>
+								<tr>
+								<th>Item Name</th>
+								<th>Item No</th>
+								<th>Item Description</th> 
+								<th>Item Group</th>
+								<th>Delete</th> 
+								</tr>
+							</thead>
+                   			<tbody>
+								<tr *ngFor="let item of items">
+								<td>		
+								<a [routerLink]="['/items',item.id]"> 
+									{{ item.itemName }}	
+								</a>  
+								</td>  
+									<td>{{ item.itemNo }}</td>
+									<td>{{ item.itemDescription}}</td> 
+									<td>{{ item.itemGroup }}</td>
+								 	<td>
+										<i (click)="deleteItem(item)" class="fa fa-lg fa-trash"></i>
+									</td> 
+							</tbody>
+                		</table>
+					</div>
+				</div>
+			</div>
+    </div> -->
+    <div class="row">
+          <div class="col-md-12">
+            <div class="card col-lg-10" style="overflow-x:auto;">
+              <p>
+	              <a class="btn btn-primary fa fa-plus" routerLink="/items">Add item</a>
+              </p>
+              <h3 class="card-title">List Of Items</h3>
+              <hr>
+                <div class="table-responsive">
+                <table datatable class="table  table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Item No</th>
+                      <th>Item Group</th>
+                      <th>Item Description</th>
+                      <th>Delete</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of items">
+                                                                  
+                      <td>
+						           <a [routerLink]="['/items',item.id]"> 
+							              {{ item.itemName }}	
+						            </a> 
+					            </td>
+                      <td>{{ item.itemNo }}</td>
+                      <td>{{ item.itemGroup }}</td>
+                      <td>{{ item.itemDescription }}</td>
+                      <td>
+                        <i (click)="deleteItem(item)" class="fa fa-lg fa-trash"></i>
+			                </td>
+                    </tr>
+                  <!--  <pagination-controls (pageChange)="p = $event" ></pagination-controls> 
+                     <div class="has-text-centered">
+                        <pagination-controls [id]="config.id"
+                         [maxSize]="maxSize"
+                         [(ngModel)]="maxSize"
+                         [directionLinks]="directionLinks"
+                         [autoHide]="autoHide"
+                         [previousLabel]="labels.previousLabel"
+                         [nextLabel]="labels.nextLabel"
+                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                         (pageChange)="onPageChange($event)"></pagination-controls> 
+                      </div> -->
+                    
+                  </tbody>
+                  
+                </table>
+                </div> 
+            </div>
+          </div>
+
+      
+
+         
+<!-- <h1>List of items</h1>
 <p>
 	<a class="btn btn-primary" routerLink="/items">Add item</a>
 </p>
-
-<table class="table table-bordered">
+ <div class="table-responsive">
+<table class="table table-bordered ">
 	<thead>
 		<tr>
 			<th>Item Name</th>
 			<th>Item No</th>
 			<th>Item Description</th>
 			<th>Item Group</th>
+			<th>Delete</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let item of items">
 		<td>		
-		<a [routerLink]="['/items',item.id]" (click)="Edit(item)"> 
+		<a [routerLink]="['/items',item.id]"> 
 			{{ item.itemName }}	
 		</a>  
 		</td>  
 			<td>{{ item.itemNo }}</td>
 			<td>{{ item.itemDescription}}</td>
 			<td>{{ item.itemGroup }}</td>
-			<!--<td>
-				<a (click)="updateItem(item)">
-				 Update
-				</a> 
-			</td> -->
-			<!--<td>
-                <i (click)="deleteItem(item)" class="glyphicon glyphicon-remove clickable"></i>
-			</td> -->
+			<td>
+                <i (click)="deleteItem(item)" class="fa fa-lg fa-trash"></i>
+			</td>
 		</tr>
 	</tbody>
 </table>
+ </div> -->
+<!-- </div> -->
 
-
-
+<!-- (click)="preventNormal($event)"  -->
 
 
 <!--
@@ -45,4 +142,49 @@
 			</td>
 			<td>
                 <i (click)="deleteUser(user)" class="glyphicon glyphicon-remove clickable"></i>
-            </td> -->
+			</td> 
+			
+
+<div class="col-md-12">
+            <div class="card">
+              <h3 class="card-title">Responsive Table</h3>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Username</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>    -->

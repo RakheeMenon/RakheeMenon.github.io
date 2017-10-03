@@ -63,6 +63,8 @@ export class ItemMasterComponent implements OnInit {
       itemDescription:['',Validators.required],
       itemGroup:['',Validators.required]
     })
+       
+  
   }
 
   
@@ -133,7 +135,7 @@ export class ItemMasterComponent implements OnInit {
         else throw error;
       });
 
-
+       this.form.reset();
       /*this._route.paramMap
           .subscribe(params=>{
           let id=+params.get('id');
@@ -143,7 +145,7 @@ export class ItemMasterComponent implements OnInit {
        });*/
   }
 
-  
+        
 
   get itemName(){
     return this.form.get('itemName');

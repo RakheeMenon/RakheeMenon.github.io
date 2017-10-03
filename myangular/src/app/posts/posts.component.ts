@@ -12,6 +12,7 @@ import { Http } from "@angular/http";
 })
 export class PostsComponent implements OnInit {
   posts:any[];
+  id:number;
   
   constructor(private service:PostsService) {                                  //we have injected HTTP class in this  hence we need to register it as a provider
     
@@ -34,6 +35,7 @@ export class PostsComponent implements OnInit {
     .subscribe(
       newPost =>{
       post['id']=newPost.id;
+      //console.log(newPost.id);
       
     },
       (error:Response)=>{
@@ -44,6 +46,7 @@ export class PostsComponent implements OnInit {
         }
         else throw error;
       });
+      //console.log(id);
   }
 
   updatePost(post){

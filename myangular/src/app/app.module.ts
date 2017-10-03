@@ -1,12 +1,12 @@
 import {ItemMasterService} from './services/item-master.service'
 import { GithubFollowersService } from './services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-handler';
-import { ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { PostsService } from './services/posts.service';
 import {HttpModule} from '@angular/http';
 import { AuthorsService } from './services/authors.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { NgClass } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -35,6 +35,12 @@ import { ItemMasterComponent } from './item-master/item-master.component';
 import {Item} from './item';
 import { ItemMasterListComponent } from './item-master-list/item-master-list.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { NewComponent } from './new/new.component';
+//import { SidebarComponent } from './src/app/sidebar/sidebar.component';
+import { MenubarComponent } from './menubar/menubar.component';
+import { GeneralMasterComponent } from './general-master/general-master.component';
+import { CustomComponent } from './custom/custom.component';
+
 //import { ItemMlistComponent } from './item-mlist/item-mlist.component';
 //import { ItemMComponent } from './item-m/item-m.component';
 
@@ -64,6 +70,11 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     ItemMasterComponent,
     ItemMasterListComponent,
     ItemDetailsComponent,
+    NewComponent,
+    //SidebarComponent,
+    MenubarComponent,
+    GeneralMasterComponent,
+    CustomComponent,
     //ItemMlistComponent,
     //ItemMComponent,
     //NgClass
@@ -71,6 +82,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
   ],
   imports: [
             BrowserModule,
+            NgxPaginationModule,
             FormsModule,
             HttpModule,
             ReactiveFormsModule,
@@ -86,11 +98,19 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
       },
       {
         path:'items/:id',
-        component:ItemMasterComponent
+        component:ItemDetailsComponent
       },
       {
         path:'items',
         component:ItemMasterComponent
+      },
+      {
+        path:'menubar',
+        component:MenubarComponent
+      },
+      {
+        path:'general',
+        component:GeneralMasterComponent
       },
       /*{
         path:'archive/:year/:month',
@@ -107,6 +127,10 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
       {
         path:'followers',
         component:GithubFollowersComponent
+      },
+      {
+        path:'menubar',
+        component:MenubarComponent
       },
       
       {
@@ -139,6 +163,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
               {provide:ErrorHandler,useClass:AppErrorHandler},
               ItemMasterService,
              ],
+            
   bootstrap: [AppComponent]
 })
 

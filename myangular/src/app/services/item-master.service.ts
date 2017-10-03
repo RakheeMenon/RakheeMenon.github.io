@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ItemMasterService extends DataService {
 
   constructor(http:Http) {
-    super('http://localhost:8000/forms/',http)
+    super('http://localhost:8000/ERPApp/',http)
    }
 
 }
